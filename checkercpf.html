@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<head>
+    <style>
+        body {
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3rby87_6UYpvZIHmaYMC7AH6vkN-EC5SgHA&usqp=CAU");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+
+        h1 {
+            color: rgb(255, 17, 0);
+            text-align: center;
+        }
+
+        #saida {
+            color: green;
+            background-color: black;
+            margin-left: auto;
+            resize: none;
+            margin-right: auto;
+        }
+
+        #entrada {
+            color: green;
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CPF Checker</h1>
+    <input id="entrada" type="text">
+    <button onclick="teste()" id="Checker">RUN</button>
+    <br>
+    <br>
+    <input type="text" id="saida">
+    <script>
+
+        function teste() {
+            var cpf_busca = document.getElementById("entrada").value
+
+            if (cpf_busca.toString().length == 11) {
+                var soma = 0;
+                for (var i = 0; i < 9; i++)
+                    soma += parseInt(cpf_busca.toString().charAt(i)) * (10 - i);
+                resto = 11 - (soma % 11);
+                if (resto == 10 || resto == 11)
+                    resto = 0;
+                if (resto != parseInt(cpf_busca.toString().charAt(9))) {
+
+                    document.getElementById('saida').value = 'Invalido';
+                    return false;
+                }
+                soma = 0;
+                for (i = 0; i < 10; i++)
+                    soma += parseInt(cpf_busca.toString().charAt(i)) * (11 - i);
+                resto = 11 - (soma % 11);
+                if (resto == 10 || resto == 11)
+                    resto = 0;
+                if (resto != parseInt(cpf_busca.toString().charAt(10))) {
+                    document.getElementById('saida').value = 'Invalido';
+                    return false;
+                }
+                document.getElementById('saida').value = 'Valido';
+            } else {
+                document.getElementById('saida').value = 'Invalido';
+            }
+        }
+    </script>
+</body>
