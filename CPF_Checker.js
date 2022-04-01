@@ -1,4 +1,4 @@
-var cpf_busca = 12345678921; //Troque pelo cpf desejado
+var cpf_busca = 12345678921;  //Troque pelo cpf desejado
 
 
 console.log(cpf_busca.toString().length, "Digitos");
